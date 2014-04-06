@@ -1,4 +1,6 @@
 GooglePlayStore::Application.routes.draw do
+  root :to => 'apps#list'
+  get 'apps/:package' => 'apps#show'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
