@@ -4,6 +4,7 @@ class CreateApps < ActiveRecord::Migration
       t.string :name
       t.string :package
       t.string :searchterm
+      t.string :image
       t.string :description
       t.float :rating
 
