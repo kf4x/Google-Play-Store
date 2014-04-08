@@ -61,10 +61,10 @@
             <img src="http://placehold.it/64x64" class="img-circle">
         </a>
         <div class="media-body">
-            <strong class="media-heading">Javier</strong>
+            <strong class="media-heading"><%= @app.comments.first.author %></strong>
             <p>* * * *</p>
             <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium aut autem blanditiis dolorum explicabo illo inventore laborum maiores nam necessitatibus neque nihil, obcaecati officiis, quae qui quidem quo unde voluptate!
+                <%= @app.comments.first.content %>
             </p>
         </div>
     </div>
