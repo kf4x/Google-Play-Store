@@ -1,64 +1,136 @@
-<ul class="horizontal-slide">
-    <li class="span2">
-        <a href="#" class="thumbnail-prvw">
-            <img src="http://placehold.it/110x150" alt="" />
-        </a>
-    </li>
-    <li class="span2">
-        <a href="#" class="thumbnail-prvw">
-            <img src="http://placehold.it/110x150" alt="" />
-        </a>
-    </li>
-    <li class="span2">
-        <a href="#" class="thumbnail-prvw">
-            <img src="http://placehold.it/110x150" alt="" />
-        </a>
-    </li>
-    <li class="span2">
-        <a href="#" class="thumbnail-prvw">
-            <img src="http://placehold.it/180x100" alt="" />
-        </a>
-    </li>
-    <li class="span2">
-        <a href="#" class="thumbnail-prvw">
-            <img src="http://placehold.it/180x100" alt="" />
-        </a>
-    </li>
 
-</ul>
-<p>* * * * *<br>
-    100,000,000+ downloads
-</p>
-<hr>
+<style>
+    body{
+        background-color: #f5f5f5;
+        margin-top: 110px;
 
-<div class="row">
-    <h4>Description</h4>
-    <p><%= @app.description %></p>
-</div>
-<hr>
-<div class="row">
-    <h4>Reviews</h4>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores cupiditate distinctio dolorem, est facere id ipsa magni modi molestias natus nemo nobis nostrum odio provident quasi qui repellat velit, veritatis!</p>
-</div>
+    }
 
-<div class="media" style=" padding: 5px">
+    ul.horizontal-slide::-webkit-scrollbar {
+        display: none;
+    }
+    hr.color-hr {
+        margin-top: 20px;
+        margin-bottom: 0px;
+        border: 0;
+        border-top: 3px solid #c5cba7
+    }
+    ul.horizontal-slide {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        white-space: nowrap;
+        overflow-x: auto;
+    }
+
+    ul.horizontal-slide li[class*="span"] {
+        display: inline-block;
+        float: none;
+    }
+
+    ul.horizontal-slide li[class*="span"]:first-child {
+        margin-left: 0;
+    }
+
+
+    .thumbnail-prvw {
+        display: block;
+        padding: 0 9px;
+        margin-bottom: 9px;
+        line-height: 1.428571429;
+        -webkit-transition: all 0.2s ease-in-out;
+        transition: all 0.2s ease-in-out;
+    }
+    #app-info
+    {
+        background-color:#f5f5f5;
+        width: 100%;
+        height:110px;
+        position:fixed;
+        top:0px;
+        border-bottom: 2px solid #c5cba7;
+    }
+    .row{
+        margin-left: 2%;
+    }
+</style>
+<div class="media" style=" padding: 2px" id="app-info">
     <a class="pull-left" href="#">
-        <img src="http://placehold.it/64x64" class="img-circle">
+        <img src="http://placehold.it/100x100">
     </a>
     <div class="media-body">
-        <strong class="media-heading">Javier</strong>
-        <p>* * * *</p>
-        <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium aut autem blanditiis dolorum explicabo illo inventore laborum maiores nam necessitatibus neque nihil, obcaecati officiis, quae qui quidem quo unde voluptate!
-        </p>
+        <strong class="media-heading"><%= @app.name %></strong>
+        <p>Devs</p>
     </div>
+
 </div>
-<hr>
-<div class="row">
-    <h4>Delevoper</h4>
+<div class="container">
+    <!--<p>hello world</p>-->
+
+
+
+    <ul class="horizontal-slide">
+        <li class="span2">
+            <a href="#" class="thumbnail-prvw">
+                <img src="http://placehold.it/110x150" alt="" />
+            </a>
+        </li>
+        <li class="span2">
+            <a href="#" class="thumbnail-prvw">
+                <img src="http://placehold.it/110x150" alt="" />
+            </a>
+        </li>
+        <li class="span2">
+            <a href="#" class="thumbnail-prvw">
+                <img src="http://placehold.it/110x150" alt="" />
+            </a>
+        </li>
+        <li class="span2">
+            <a href="#" class="thumbnail-prvw">
+                <img src="http://placehold.it/180x100" alt="" />
+            </a>
+        </li>
+        <li class="span2">
+            <a href="#" class="thumbnail-prvw">
+                <img src="http://placehold.it/180x100" alt="" />
+            </a>
+        </li>
+
+    </ul>
+    <p>* * * * *<br>
+        100,000,000+ downloads
+    </p>
     <hr>
-    <p><span class="glyphicon glyphicon-search"></span> web</p>
+
+    <div class="row">
+        <h4>Description</h4>
+        <p><%= @app.description %></p>
+    </div>
     <hr>
-    <p><span class="glyphicon glyphicon-envelope"></span> email</p>
+    <div class="row">
+        <h4>Reviews</h4>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores cupiditate distinctio dolorem, est facere id ipsa magni modi molestias natus nemo nobis nostrum odio provident quasi qui repellat velit, veritatis!</p>
+    </div>
+
+    <div class="media" style=" padding: 5px">
+        <a class="pull-left" href="#">
+            <img src="http://placehold.it/64x64" class="img-circle">
+        </a>
+        <div class="media-body">
+            <strong class="media-heading">Javier</strong>
+            <p>* * * *</p>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium aut autem blanditiis dolorum explicabo illo inventore laborum maiores nam necessitatibus neque nihil, obcaecati officiis, quae qui quidem quo unde voluptate!
+            </p>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <h4>Delevoper</h4>
+        <hr>
+        <p><span class="glyphicon glyphicon-search"></span> web</p>
+        <hr>
+        <p><span class="glyphicon glyphicon-envelope"></span> email</p>
+    </div>
+    <hr>
 </div>
-<hr>
