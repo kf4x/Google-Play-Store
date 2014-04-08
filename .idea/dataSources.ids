@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<component name="dataSourceStorage">
-  <data-source source="LOCAL" name="Rails GooglePlayStore: development" uuid="907bced0-fbdc-489c-b2fb-4e869ff7faec">
-    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
-  </data-source>
-  <data-source source="LOCAL" name="Rails GooglePlayStore: test" uuid="ee8f24ba-4897-4fcb-b989-0d7c87e63e8d">
-    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
-  </data-source>
-</component>
