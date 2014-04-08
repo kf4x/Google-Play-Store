@@ -2,8 +2,8 @@ class AppsController < ApplicationController
 
 
   def show
-    puts("here!")
-    puts(params[:package])
+    @app = App.find_by_package(params[:id])
+    # puts(@app.description)
 
   end
 
