@@ -1,6 +1,6 @@
 GooglePlayStore::Application.routes.draw do
   root :to => 'apps#list'
-  get 'apps/:package' => 'apps#show'
+  get 'apps/details' => 'apps#show', :constraints => { :id => /[\w+\.]+/ }
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
