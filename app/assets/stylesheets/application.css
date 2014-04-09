@@ -72,9 +72,13 @@ ul.horizontal-slide li[class*="span"]:first-child {
 
 .box{
     background:white;
+    -webkit-border-radius: 4px;
     box-shadow: 0px -3px 15px -5px black;
     -webkit-box-shadow: 0px -3px 15px -5px black;
     -moz-box-shadow: 0px -3px 15px -5px black;
+    padding-top: 5px;
+    margin: 8px;
+
 }
 
 body{
@@ -98,4 +102,15 @@ p {
 }
 .navbar-fixed-top {
     /*padding-top: 1.5%;*/
+}
+
+.media-body{
+    padding-top: 8px;
+    font-size: 13px;
+}
+
+.col-centered{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
