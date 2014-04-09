@@ -119,6 +119,7 @@ p {
     border-width: 1px;
     padding-left: 0px;
     padding-right: 0px;
+    position: inherit;
 
 }
 #average-rating-title{
