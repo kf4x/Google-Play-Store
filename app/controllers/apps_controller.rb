@@ -8,7 +8,7 @@ class AppsController < ApplicationController
   end
 
   def list
-
+    @apps = App.all
   end
 
 end
