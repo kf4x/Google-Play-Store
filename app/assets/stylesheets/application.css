@@ -114,3 +114,30 @@ p {
     margin-left: auto;
     margin-right: auto;
 }
+#avg{
+    border: solid;
+    border-width: 1px;
+    padding-left: 0px;
+    padding-right: 0px;
+
+}
+#average-rating-title{
+    color: #ffffff;
+    background: #777777;
+    font-weight: lighter;
+}
+#avg-rating{
+    display: block;
+    font-size: 22px;
+    margin: 10px 0px;
+    font-weight: 400;
+}
+#avg-star {
+    display: block;
+    margin: 0px;
+}
+#total-ratings{
+    display: block;
+    margin: 0px;
+
+}
