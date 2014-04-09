@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140408082144) do
+ActiveRecord::Schema.define(:version => 20140409204322) do
 
   create_table "apps", :force => true do |t|
     t.string   "name"
@@ -20,8 +20,15 @@ ActiveRecord::Schema.define(:version => 20140408082144) do
     t.string   "image"
     t.string   "description"
     t.float    "rating"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.string   "developer"
+    t.string   "lastupdate"
+    t.integer  "installs"
+    t.string   "website"
+    t.string   "email"
+    t.string   "privacypolicy"
+    t.integer  "ratings"
   end
 
   create_table "apps_permissions", :id => false, :force => true do |t|
