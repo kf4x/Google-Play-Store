@@ -4,7 +4,7 @@
     </a>
     <div class="media-body">
         <div class="app-name"><%= @app.name %></div>
-        <p>Devs</p>
+        <p><%= @app.developer %></p>
     </div>
 
 </div>
@@ -41,8 +41,8 @@
         </li>
 
     </ul>
-    <p>* * * * *<br>
-        100,000,000+ downloads
+    <p>* * * * * <%= @app.ratings %> <br>
+        <%= @app.installs %>
     </p>
     <hr>
 
@@ -57,9 +57,9 @@
             <div id="average-rating-title">
                 Average
             </div>
-            <p id="avg-rating">4.5</p>
+            <p id="avg-rating"><%= @app.rating %></p>
             <p id="avg-star">*****</p>
-            <p id="total-ratings">19292</p>
+            <p id="total-ratings"><%= @app.ratings %> </p>
         </div>
     </div>
 
@@ -79,9 +79,11 @@
     <div class="row">
         <h4>Delevoper</h4>
         <hr>
-        <p><span class="glyphicon glyphicon-search"></span> web</p>
+        <p><span class="glyphicon glyphicon-search"></span> web <%= @app.website%> </p>
         <hr>
-        <p><span class="glyphicon glyphicon-envelope"></span> email</p>
+        <p><span class="glyphicon glyphicon-envelope"></span> email <%= @app.email%></p>
+        <hr>
+        <p><span class="glyphicon glyphicon-envelope"></span> privacy policy <%= @app.privacypolicy %></p>
     </div>
     <hr>
 </div>
