@@ -11,4 +11,14 @@ class AppsController < ApplicationController
     @apps = App.all
   end
 
+  def list_by_search
+    @apps = App.all
+    render :layout => 'list'
+  end
+
+  def list_by_dev
+    # @apps = App.find_all_by_developer(params[:dev])
+    render :layout => 'list'
+  end
+
 end
