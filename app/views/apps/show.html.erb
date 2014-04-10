@@ -41,7 +41,16 @@
         </li>
 
     </ul>
-    <p>* * * * * <%= @app.ratings %> <br>
+    <div class="stars-container">
+
+        <div class="tiny-star">
+            <div class="current-rating" style="width: 78.47838401794434%;">
+
+            </div>
+
+        </div>
+        <%= @app.ratings %>
+    </div>
         <%= @app.installs %>
     </p>
     <hr>
@@ -58,7 +67,13 @@
                 Average
             </div>
             <p id="avg-rating"><%= @app.rating %></p>
-            <p id="avg-star">*****</p>
+            <div class="stars-container">
+                <div class="tiny-star">
+                    <div class="current-rating" style="width: 78.47838401794434%;">
+
+                    </div>
+                </div>
+            </div>
             <p id="total-ratings"><%= @app.ratings %> </p>
         </div>
     </div>
@@ -69,7 +84,13 @@
         </a>
         <div class="media-body">
             <strong class="media-heading"><%= @app.comments.first.author %></strong>
-            <p>* * * *</p>
+            <div class="stars-container">
+                <div class="tiny-star">
+                    <div class="current-rating" style="width: 78.47838401794434%;">
+
+                    </div>
+                </div>
+            </div>
             <p>
                 <%= @app.comments.first.content %>
             </p>

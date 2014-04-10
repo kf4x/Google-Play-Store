@@ -10,7 +10,14 @@
         <div class="media-body">
             <p class="app-name-list"><%= link_to app.name, get_app_path({:id => app.package})%></p>
             <%= link_to app.developer, get_dev_path(app.developer), {:class => 'dev-name-list' }%>
-            <p class="dev-name-list">****</p>
+
+            <div class="stars-container">
+                <div class="tiny-star">
+                    <div class="current-rating" style="width: 78.47838401794434%;">
+
+                    </div>
+                </div>
+            </div>
 
         </div>
     </div>

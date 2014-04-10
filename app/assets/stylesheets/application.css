@@ -158,3 +158,29 @@ p {
     font-size: 14px;
     margin: 0 0 0 0px;
 }
+
+.stars-container{
+    /*display: inline-block;*/
+    display: inherit;
+    vertical-align: top;
+    white-space: nowrap;
+}
+
+.tiny-star{
+    left: -1px;
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+    position: relative;
+    top: 1px;
+    height: 14px;
+    width: 69px;
+    background-image: url("star_empty.png");
+}
+
+.current-rating{
+    display: block;
+    position: absolute;
+    height: 14px;
+    background-image: url("star.png");
+}
