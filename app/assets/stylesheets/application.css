@@ -149,6 +149,7 @@ p {
     text-decoration: none;
     color: #8d8d8d;
     margin: 0 0 0 0px;
+    font-weight: 300;
 }
 .app-name-list {
     text-decoration: none !important;

@@ -9,9 +9,9 @@
         </a>
         <div class="media-body">
             <p class="app-name-list"><%= link_to app.name, get_app_path({:id => app.package})%></p>
-            <p><%= link_to app.developer, get_dev_path(app.developer), {:class => 'dev-name-list' }%></p>
+            <%= link_to app.developer, get_dev_path(app.developer), {:class => 'dev-name-list' }%>
+            <p class="dev-name-list">****</p>
 
-            * * * *
         </div>
     </div>
     <% end %>
