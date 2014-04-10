@@ -146,3 +146,13 @@ p {
     font-weight: 400;
     font-size: 17px;
 }
+.dev-name-list {
+    text-decoration: none;
+    color: #8d8d8d;
+}
+.app-name-list {
+    text-decoration: none !important;
+    color: #313131;
+    font-weight: 400;
+    font-size: 14px;
+}
