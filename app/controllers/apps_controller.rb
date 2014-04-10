@@ -17,8 +17,9 @@ class AppsController < ApplicationController
   end
 
   def list_by_dev
-    # @apps = App.find_all_by_developer(params[:dev])
-    render :layout => 'list'
+    @apps = App.find_all_by_developer(params[:dev])
+
+    render :template => 'apps/list'
   end
 
 end
