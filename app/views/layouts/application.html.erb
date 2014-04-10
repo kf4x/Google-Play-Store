@@ -20,7 +20,10 @@
             <%= link_to '<button type="button" class="btn btn-default navbar-btn pull-left"><span class="glyphicon glyphicon-chevron-left"></span></button>'.html_safe, :show_all %>
         <%end%>
         <!--<button type="button" class="btn btn-default navbar-btn pull-left"><span class="glyphicon glyphicon-chevron-left"></span></button>-->
-        <button type="button" class="btn btn-default navbar-btn pull-right"><span class="glyphicon glyphicon-search"></span></button>
+        <div id="search-wrapper">
+            <!--<input id="forsearch" style="float: left; width: 50%" type="text" class="form-control" placeholder="Search">-->
+            <button type="button" id="search" class="btn btn-default navbar-btn pull-right"><span class="glyphicon glyphicon-search"></span></button>
+        </div>
     </div>
     <!--<form class="navbar-form navbar-left" role="search">-->
         <!--<div class="form-group">-->
@@ -31,6 +34,7 @@
 
 
 </nav>
+
 <%= yield %>
 
 
