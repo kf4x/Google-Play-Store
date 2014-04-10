@@ -73,12 +73,11 @@ ul.horizontal-slide li[class*="span"]:first-child {
 .box{
     background:white;
     -webkit-border-radius: 4px;
-    box-shadow: 0px -3px 15px -5px black;
-    -webkit-box-shadow: 0px -3px 15px -5px black;
-    -moz-box-shadow: 0px -3px 15px -5px black;
     padding-top: 5px;
     margin: 8px;
-
+    -webkit-box-shadow: 0 8px 6px -6px lightgray;
+    -moz-box-shadow: 0 8px 6px -6px lightgray;
+    box-shadow: 0 8px 6px -6px lightgray;
 }
 
 body{
@@ -149,10 +148,12 @@ p {
 .dev-name-list {
     text-decoration: none;
     color: #8d8d8d;
+    margin: 0 0 0 0px;
 }
 .app-name-list {
     text-decoration: none !important;
     color: #313131;
     font-weight: 400;
     font-size: 14px;
+    margin: 0 0 0 0px;
 }

@@ -1,17 +1,17 @@
 
 <div class="container">
-    <% @apps.each do |app| %>
-    <div class="row-fluid">
-        <div class="col-xs-3 col-sm-3 box" >
-            <a  href="index-detail.html">
-                <img src="http://placehold.it/74x74">
-            </a>
-            <div class="media-body">
-                <p class="app-name-list"><%= link_to app.name, get_app_path({:id => app.package})%></p>
-                <p ><%= link_to app.developer, get_dev_path(app.developer), {:class => 'dev-name-list' }%></p>
 
-                * * * *
-            </div>
+
+    <% @apps.each do |app| %>
+    <div class="media box" style=" padding: 5px">
+        <a class="pull-left" href="index-detail.html">
+            <img src="http://placehold.it/64x64">
+        </a>
+        <div class="media-body">
+            <p class="app-name-list"><%= link_to app.name, get_app_path({:id => app.package})%></p>
+            <p><%= link_to app.developer, get_dev_path(app.developer), {:class => 'dev-name-list' }%></p>
+
+            * * * *
         </div>
     </div>
     <% end %>
