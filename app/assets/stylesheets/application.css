@@ -175,6 +175,7 @@ p {
     top: 1px;
     height: 14px;
     width: 69px;
+    z-index: -9;
     background-image: url("star_empty.png");
 }
 
