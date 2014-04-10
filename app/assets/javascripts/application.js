@@ -13,3 +13,9 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+
+$("#search").click(function(){
+//    $("#forsearch").fadeIn(1000)
+    console.log("ksjd")
+})
