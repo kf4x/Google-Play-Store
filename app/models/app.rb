@@ -4,6 +4,8 @@ class App < ActiveRecord::Base
   has_many :images
   has_many :comments
 
+  scoped_search :on => [:name, :description]
+
   def self.more_apps_by_dev(app)
     # would like to see this as a where statement
     # get 3 the apps by the developer

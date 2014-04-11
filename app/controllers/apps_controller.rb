@@ -13,8 +13,9 @@ class AppsController < ApplicationController
   end
 
   def list_by_search
-    @apps = App.all
-    render :layout => 'list'
+    @apps = App.search_for(params[:q])
+    puts(params[:q])
+    render :template => 'apps/list'
   end
 
   def list_by_dev
