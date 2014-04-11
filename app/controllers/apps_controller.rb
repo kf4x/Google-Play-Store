@@ -4,7 +4,7 @@ class AppsController < ApplicationController
   def show
     @app = App.find_by_package(params[:id])
     # puts(@app.description)
-    @apps = App.find_all_by_developer(@app.developer)
+    @more_by_dev = App.find_all_by_developer(@app.developer)
   end
 
   def list
