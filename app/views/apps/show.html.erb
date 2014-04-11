@@ -100,7 +100,7 @@
     <hr>
     <div class="row">
         <h4>More by <%= @app.developer.capitalize %></h4>
-        <% @more_by_dev.first(3).each do |app| %>
+        <% @more_by_dev.each do |app| %>
             <div class="card">
 
                     <img class="card-img" src="http://placehold.it/75x75">

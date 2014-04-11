@@ -5,10 +5,7 @@ class AppsController < ApplicationController
     @app = App.find_by_package(params[:id])
     # puts(@app.description)
 
-    # move to model
-    tmp = App.find_all_by_developer(@app.developer)
-    @more_by_dev = tmp.select{|app| app.name!=@app.name}
-    # end move to model
+    @more_by_dev = App.more_apps_by_dev(@app)
   end
 
   def list
