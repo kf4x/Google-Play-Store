@@ -5,11 +5,11 @@
     <% @apps.each do |app| %>
     <div class="media box" style=" padding: 5px">
         <a class="pull-left" href="index-detail.html">
-            <img src="http://placehold.it/64x64">
+            <img class="card-img" src="http://placehold.it/75x75">
         </a>
         <div class="media-body">
             <p class="app-name-list"><%= link_to app.name, get_app_path({:id => app.package})%></p>
-            <%= link_to app.developer, get_dev_path(app.developer), {:class => 'dev-name-list' }%>
+            <p class="dev-name-list"><%= app.developer%></p>
 
             <div class="stars-container">
                 <div class="tiny-star">

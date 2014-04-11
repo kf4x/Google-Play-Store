@@ -4,7 +4,7 @@
     </a>
     <div class="media-body">
         <div class="app-name"><%= @app.name %></div>
-        <p><%= link_to @app.developer, get_dev_path(@app.developer), {:class => 'dev-name-list' }%></p>
+        <p class="dev-name-list"><%= @app.developer %></p>
     </div>
 
 </div>
@@ -102,11 +102,11 @@
         <% @apps.first(3).each do |app| %>
             <div class="card">
 
-                    <img class="card-img" src="http://placehold.it/64x64">
+                    <img class="card-img" src="http://placehold.it/75x75">
 
                 <div class="details">
                     <p class="card-title"><%= link_to app.name, get_app_path({:id => app.package})%></p>
-                    <%= link_to app.developer, get_dev_path(app.developer), {:class => 'card-dev' }%>
+                    <p class="card-dev"><%= app.developer%></p>
 
                     <div class="stars-container">
                         <div class="tiny-star">
