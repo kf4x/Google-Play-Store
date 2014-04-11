@@ -4,7 +4,11 @@ class AppsController < ApplicationController
   def show
     @app = App.find_by_package(params[:id])
     # puts(@app.description)
-    @more_by_dev = App.find_all_by_developer(@app.developer)
+
+    # move to model
+    tmp = App.find_all_by_developer(@app.developer)
+    @more_by_dev = tmp.select{|app| app.name!=@app.name}
+    # end move to model
   end
 
   def list

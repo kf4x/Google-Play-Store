@@ -96,6 +96,7 @@
             </p>
         </div>
     </div>
+    <% if !@more_by_dev.empty? %>
     <hr>
     <div class="row">
         <h4>More by <%= @app.developer.capitalize %></h4>
@@ -120,6 +121,7 @@
             </div>
         <% end %>
     </div>
+    <% end %>
     <hr>
     <div class="row">
         <h4>Delevoper</h4>
