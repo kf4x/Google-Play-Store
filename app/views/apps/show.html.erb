@@ -98,6 +98,30 @@
     </div>
     <hr>
     <div class="row">
+        <h4>More by <%= @app.developer.capitalize %></h4>
+        <% @apps.first(3).each do |app| %>
+            <div class="card">
+
+                    <img class="card-img" src="http://placehold.it/64x64">
+
+                <div class="details">
+                    <p class="card-title"><%= link_to app.name, get_app_path({:id => app.package})%></p>
+                    <%= link_to app.developer, get_dev_path(app.developer), {:class => 'card-dev' }%>
+
+                    <div class="stars-container">
+                        <div class="tiny-star">
+                            <div class="current-rating" style="width: 78.47838401794434%;">
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        <% end %>
+    </div>
+    <hr>
+    <div class="row">
         <h4>Delevoper</h4>
         <hr>
         <p><span class="glyphicon glyphicon-search"></span> web <%= @app.website%> </p>
