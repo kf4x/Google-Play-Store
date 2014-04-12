@@ -213,7 +213,7 @@ p {
     position: relative;
     text-decoration: none;
     vertical-align: top;
-
+    z-index: -9;
 }
 
 .card .details {
