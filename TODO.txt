@@ -1,5 +1,0 @@
-#TODO add developer column app table
-#TODO ratings column app table
-#TODO updated column app table
-#TODO installs column app table
-#TODO contact column app table
