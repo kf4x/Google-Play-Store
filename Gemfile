@@ -10,7 +10,7 @@ group :development do
 end
 
 group :production do
-  gem 'pg', '~> 0.14.1'
+  gem 'pg'
 end
 
 # To Implement search
