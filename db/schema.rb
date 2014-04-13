@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140409204322) do
+ActiveRecord::Schema.define(:version => 20140413085832) do
 
   create_table "apps", :force => true do |t|
     t.string   "name"
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(:version => 20140409204322) do
     t.string   "email"
     t.string   "privacypolicy"
     t.integer  "ratings"
+    t.string   "price"
   end
 
   create_table "apps_permissions", :id => false, :force => true do |t|
