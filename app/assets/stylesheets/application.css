@@ -263,3 +263,11 @@ p {
     display: inherit;
 
 }
+
+.price-list{
+    text-decoration: none;
+    color: rgb(179, 200, 51);
+    margin: 0 0 0 0px;
+    font-weight: 300;
+    font-size: 11px;
+}
