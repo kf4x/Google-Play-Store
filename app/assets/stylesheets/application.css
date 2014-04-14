@@ -271,3 +271,17 @@ p {
     font-weight: 300;
     font-size: 11px;
 }
+
+.buy-btn{
+    position: inherit;
+    bottom: 0px;
+    right: 0px;
+    margin-top: 25px;
+    margin-right: 5px;
+    color: #ffffff;
+    font-weight: 300;
+    background: rgb(179, 200, 51);
+    padding: 4px 35px 4px 35px;
+
+    border: none;
+}
