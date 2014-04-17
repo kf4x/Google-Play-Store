@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140413090437) do
+ActiveRecord::Schema.define(:version => 20140415184122) do
 
   create_table "apps", :force => true do |t|
     t.string   "name"
@@ -30,6 +30,11 @@ ActiveRecord::Schema.define(:version => 20140413090437) do
     t.string   "privacypolicy"
     t.integer  "ratings"
     t.string   "price"
+    t.integer  "fivestars"
+    t.integer  "fourstars"
+    t.integer  "threestars"
+    t.integer  "twostars"
+    t.integer  "onestar"
   end
 
   create_table "apps_permissions", :id => false, :force => true do |t|
