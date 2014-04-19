@@ -6,6 +6,7 @@ class AppsController < ApplicationController
     # puts(@app.description)
 
     @more_by_dev = App.more_apps_by_dev(@app)
+
   end
 
   def list
