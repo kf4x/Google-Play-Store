@@ -52,8 +52,6 @@ GEM
     multi_json (1.9.2)
     pg (0.17.1)
     polyglot (0.3.4)
-    puma (2.8.2)
-      rack (>= 1.1, < 2.0)
     rack (1.5.2)
     rack-test (0.6.2)
       rack (>= 1.0)
@@ -110,7 +108,6 @@ DEPENDENCIES
   coffee-rails
   jquery-rails
   pg
-  puma
   rails (= 4.1.0)
   sass-rails
   scoped_search
