@@ -11,17 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140415184122) do
+ActiveRecord::Schema.define(:version => 20140421042033) do
 
   create_table "apps", :force => true do |t|
     t.string   "name"
     t.string   "package"
     t.string   "searchterm"
     t.string   "image"
-    t.string   "description"
+    t.text     "description",   :limit => 255
     t.float    "rating"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
     t.string   "developer"
     t.string   "lastupdate"
     t.string   "installs"
@@ -44,10 +44,10 @@ ActiveRecord::Schema.define(:version => 20140415184122) do
 
   create_table "comments", :force => true do |t|
     t.string   "author"
-    t.string   "content"
+    t.text     "content",    :limit => 255
     t.integer  "app_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
   end
 
   create_table "images", :force => true do |t|
