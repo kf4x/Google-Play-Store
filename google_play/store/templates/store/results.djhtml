@@ -1,0 +1,27 @@
+{% extends "store/base.djhtml" %}
+
+{% block content %}
+    <div class="container">
+        {% for app in object_list %}
+            <div class="media box" style=" padding: 5px">
+		        <a class="pull-left" href="index-detail.html">
+			        <img class="card-img" src="http://placehold.it/75x75">
+                </a>
+                <div class="media-body">
+                    <p class="app-name-list">{{app.name}}</p>
+                    <p class="dev-name-list"></p>
+
+                    <div class="stars-container">
+                        <div class="tiny-star">
+                            <div class="current-rating" style="width: 78.47838401794434%;">
+
+                            </div>
+                        </div>
+                    </div>
+                    <p class="price-list pull-right"><%= app.price%></p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+{% endblock %}
