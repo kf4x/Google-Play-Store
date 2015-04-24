@@ -1,30 +1,35 @@
 from django.db import models
 
-# Create your models here.
-
-
     
-class Permission(models.Model):
-    
+
+class AndroidPermission(models.Model):
+    """Permissions for app"""
     name = models.CharField(max_length=512)
     description = models.TextField()
     category = models.CharField(max_length=512)
     
 
-class App(models.Model):
-
+class AndroidApplication(models.Model):
+    """Listing"""
     name = models.CharField(max_length=512)
     description = models.TextField()
     package = models.CharField(max_length=512)
     category = models.CharField(max_length=512)
 
     # many to many 
-    permissions = models.ManyToManyField(Permission, related_name='apps')
-    
-class Comment(models.Model):
+    permissions = models.ManyToManyField(AndroidPermission, related_name='apps')
 
+class ApplicationReview(models.Model):
+    """Comments/Reivews for app"""
     user = models.CharField(max_length=512)
     text = models.TextField()
 
     # one to many
-    app = models.ForeignKey(App)
+    app = models.ForeignKey(AndroidApplication)
+
+class ApplicationScreenShot(models.Model):
+    """Screen Shot for app"""
+    location = models.CharField(max_length=512, default='')
+    
+    # one to many
+    app = models.ForeignKey(AndroidApplication)
