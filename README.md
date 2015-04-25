@@ -24,6 +24,13 @@ Run the server
 python manage.py runserver
 ```
 
+##Import
+
+Make sure you change your path...
+
+```bash
+python manage.py import_apps --path="../../datasets/2k13_all_by_term.json"
+```
 
 
 ##About
