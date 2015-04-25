@@ -4,12 +4,12 @@
 
 <div class="media" style=" padding: 2px" id="app-info">
     <a class="pull-left" href="#">
-        <img src="http://placehold.it/100x100">
+        <img src="{{object.icon}}">
     </a>
     <div class="media-body">
-        <div class="app-name">{{object.app}}</div>
-        <p class="dev-name-list"><%= @app.developer %></p>
-        <button class="buy-btn pull-right"><%= @app.price %></button>
+        <div class="app-name">{{object.name}}</div>
+        <p class="dev-name-list">{{object.developer}}</p>
+        <button class="buy-btn pull-right">{{object.price}}</button>
     </div>
 
 </div>
@@ -49,20 +49,20 @@
     <div class="stars-container">
 
         <div class="tiny-star go-back">
-            <div class="current-rating" style="width: 78.47838401794434%;">
+            <div class="current-rating" style="width: {{object.percentrating}}%;">
 
             </div>
 
         </div>
-        <%= @app.ratings %>
+        
     </div>
-        <%= @app.installs %>
+        {{object.installs}}
     </p>
     <hr>
 
     <div class="row">
         <h4>Description</h4>
-        <p><%= @app.description.html_safe %></p>
+        <p>{{object.description | safe}}</p>
     </div>
     <hr>
     <div class="row">
@@ -71,7 +71,7 @@
             <div id="average-rating-title">
                 Average
             </div>
-            <p id="avg-rating"><%= @app.rating %></p>
+            <p id="avg-rating">{{object.rating|floatformat}}</p>
             <div class="stars-container">
                 <div class="tiny-star go-back">
                     <div class="current-rating" style="width: 78.47838401794434%;">

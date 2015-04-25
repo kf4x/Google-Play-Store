@@ -1,27 +1,63 @@
 {% extends "store/base.djhtml" %}
 
 {% block content %}
-    <div class="container">
-        {% for app in object_list %}
-            <div class="media box" style=" padding: 5px">
-		        <a class="pull-left" href="index-detail.html">
-			        <img class="card-img" src="http://placehold.it/75x75">
-                </a>
-                <div class="media-body">
-                    <p class="app-name-list">{{app.name}}</p>
-                    <p class="dev-name-list"></p>
+  <div class="search-page">
+    {{hamming.distance}}
+    <div class="card-list">
 
-                    <div class="stars-container">
-                        <div class="tiny-star">
-                            <div class="current-rating" style="width: 78.47838401794434%;">
-
-                            </div>
-                        </div>
-                    </div>
-                    <p class="price-list pull-right"><%= app.price%></p>
+      {% for app in object_list %}
+        <div class="card no-rationale square-cover apps tiny" >
+          <div class="card-content id-track-click id-track-impression" >
+            <div class="cover">
+              <div class="cover-image-container">
+                <div class="cover-outer-align">
+                  <div class="cover-inner-align">
+                    <img alt="Google" class="cover-image" src="{{app.icon}}" aria-hidden="true">
+                  </div>
                 </div>
+              </div>
             </div>
-        {% endfor %}
+            <div class="details">
+              <a class="card-click-target" href="/store/apps/details?id=com.google.android.googlequicksearchbox" aria-hidden="true" tabindex="-1"></a>
+              <h2>
+                <a class="title" href="/store/apps/details?id=com.google.android.googlequicksearchbox" title="Google">    Google  
+                  
+                  <span class="paragraph-end"></span>
+                </a>
+              </h2>
+              <div class="subtitle-container">
+                <a class="subtitle" href="/store/apps/developer?id=Google+Inc." title="Google Inc.">Google Inc.</a>
+                <span class="price-container">
+                  <span class="apps is-price-tag buy-button-container" >
+                    <button style="display:none" class="price buy id-track-click" >
+                      <span class="display-price">{{app.price}}</span>
+                    </button>
+                  </span>
+                </span>
+              </div>
+              <div class="reason-set">
+                <span class="stars-container">
+                  <a href="/store/apps/details?id=com.google.android.googlequicksearchbox" tabindex="-1">
+                    <div class="reason-set-star-rating">
+                      <div class="tiny-star star-rating-non-editable-container" >
+                        <div class="current-rating" style="width: {{app.percentrating}}%;"></div>
+                      </div>
+                    </div>
+                  </a>
+                  <span class="price-container">
+                    <span class="apps is-price-tag buy-button-container" >
+                      <button style="display:none" class="price buy id-track-click">
+                        <span class="display-price">Free</span>
+                      </button>
+                    </span>
+                  </span>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+      {% endfor %}
     </div>
-
+  </div>
 {% endblock %}
