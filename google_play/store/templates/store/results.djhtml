@@ -12,21 +12,21 @@
               <div class="cover-image-container">
                 <div class="cover-outer-align">
                   <div class="cover-inner-align">
-                    <img alt="Google" class="cover-image" src="{{app.icon}}" aria-hidden="true">
+                    <img alt="{{app.name}}" class="cover-image" src="{{app.icon}}" aria-hidden="true">
                   </div>
                 </div>
               </div>
             </div>
             <div class="details">
-              <a class="card-click-target" href="/store/apps/details?id=com.google.android.googlequicksearchbox" aria-hidden="true" tabindex="-1"></a>
+              <a class="card-click-target" href="{%url 'app_details' package=app.package  %}" aria-hidden="true" tabindex="-1"></a>
               <h2>
-                <a class="title" href="/store/apps/details?id=com.google.android.googlequicksearchbox" title="Google">    Google  
+                <a class="title" href="{%url 'app_details' package=app.package %}" title="{{app.name}}">{{app.name}} 
                   
                   <span class="paragraph-end"></span>
                 </a>
               </h2>
               <div class="subtitle-container">
-                <a class="subtitle" href="/store/apps/developer?id=Google+Inc." title="Google Inc.">Google Inc.</a>
+                <a class="subtitle" href="{%url 'app_details' package=app.package %}" title="{{app.developer}}">{{app.developer}}</a>
                 <span class="price-container">
                   <span class="apps is-price-tag buy-button-container" >
                     <button style="display:none" class="price buy id-track-click" >
@@ -37,7 +37,7 @@
               </div>
               <div class="reason-set">
                 <span class="stars-container">
-                  <a href="/store/apps/details?id=com.google.android.googlequicksearchbox" tabindex="-1">
+                  <a href="{%url 'app_details' package=app.package %}" tabindex="-1">
                     <div class="reason-set-star-rating">
                       <div class="tiny-star star-rating-non-editable-container" >
                         <div class="current-rating" style="width: {{app.percentrating}}%;"></div>
@@ -47,7 +47,7 @@
                   <span class="price-container">
                     <span class="apps is-price-tag buy-button-container" >
                       <button style="display:none" class="price buy id-track-click">
-                        <span class="display-price">Free</span>
+                        <span class="display-price">{{app.price}}</span>
                       </button>
                     </span>
                   </span>
