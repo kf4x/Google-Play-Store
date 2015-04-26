@@ -47,12 +47,15 @@ class JSONHandler(object):
 
         if isinstance(data, dict):
             done = self._odecode()
+            return done.name
         elif isinstance(data, list):
             done = self._ldecode()
+            return str(done) + " apps"
         else:
             logging.error('Deserialize failed')
-            
-        logging.debug('deserialize done')
+
+        
+        return "error"
 
         
     def _odecode(self, obj=None):
@@ -70,6 +73,7 @@ class JSONHandler(object):
 
             if 'screenshot' in k:
                  self._screenshot(app, obj[k])
+
             
         return app
                 
@@ -79,6 +83,7 @@ class JSONHandler(object):
         for obj in self.data:
             tmp +=1
             self._odecode(obj)
+
         return tmp
 
     
@@ -92,27 +97,27 @@ class JSONHandler(object):
             
     def _application(self, data):
         """Add application to Database"""
+        
         app, created = AndroidApplication.objects.get_or_create(
             name=data['name'],
             package=data['package'])
 
-        logging.debug("app %s" % app.name)
-
+        
         # icon function
-        icon = data['icon'].decode('unicode-escape')
-        if icon[-3:] == "-rw":
+        icon = data['icon'] if 'icon' in data else ''
+        if icon and icon[-3:] == "-rw":
             icon = icon[:-3]
             
         app.icon = icon
         # end icon fucntion
-
-        app.rating = data['rating']
-        app.total_ratings = data['total_ratings']
-        app.description = data['description']
-        app.pub_date = data['pub_date']
-        app.price = data['price']
-        app.size = data['size']
-        app.installs = data['installs']
+        
+        app.rating = data['rating'] if 'rating' in data else 0.0
+        app.total_ratings = data['total_ratings'] if 'total_ratings' in data else 0.0
+        app.description = data['description'] if 'description' in data else ''
+        app.pub_date = data['pub_date'] if 'pub_date' in data else ''
+        app.price = data['price'] if 'price' in data else ''
+        app.size = data['size'] if 'size' in data else ''
+        app.installs = data['installs'] if 'installs' in data else ''
         
         app.save()
         return app
@@ -142,8 +147,8 @@ def import_app(path):
         for app in searches[search_term]:
             apps.append(app)
             if count == len(searches[search_term])-1 or count == threshhold :
-                handlr.deserialize(apps)
-                print 'er'
+                ret = handlr.deserialize(apps)
+                logging.debug('Serialized %s' % ret) 
                 apps = []
                 count = 0
             else:

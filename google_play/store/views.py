@@ -6,6 +6,7 @@ from .models import AndroidApplication, hamming_stats
 from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render_to_response
 from django.template import RequestContext, loader
+from django.db.models import Q
 
 
 
@@ -18,14 +19,12 @@ class DetailView(generic.View):
     template_name = 'store/detail.djhtml'
 
     def get(self, request, *args, **kwargs):
-        try:
-            pkg  = self.kwargs["package"]
-            self.object= AndroidApplication.objects.get(package=pkg)
-            self.object.description = self.object.description
-            self.object.percentrating = (self.object.rating/5.0)*100
-            
-        except Exception, e:
-            print e
+
+        pkg  = self.kwargs["package"]
+        self.object= AndroidApplication.objects.get(package=pkg)
+        self.object.description = self.object.description
+        self.object.percentrating = (self.object.rating/5.0)*100
+
 
         t = loader.get_template('store/detail.djhtml')
         c = RequestContext(request, self.object)
@@ -42,7 +41,8 @@ class ResultsView(generic.ListView):
     
     def get_queryset(self):
         cont = self.request.GET.get('q')
-        return AndroidApplication.objects.filter(name__contains=cont)[:20]
+        return AndroidApplication.objects.filter(
+            Q(name__contains=cont) | Q(description__contains=cont))[:40]
     
     def get_context_data(self, **kwargs):
         context = super(ResultsView, self).get_context_data(**kwargs)
