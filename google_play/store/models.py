@@ -91,10 +91,11 @@ class HammingPrepare(object):
         return apps
 
 # getting stats of search.
+# @lru_cache(maxsize=32)
 def hamming_stats(apps):
     if apps == None or len(apps) == 0:
         return {"distance": 0, "stats": {}}
-        
+    
     apps = HammingPrepare().serialize(apps)
     ss = SortedSet([p.name for p in AndroidPermission.objects.all()])
     hamming = compare.Hamming(tnp=ss, key='permissions')
