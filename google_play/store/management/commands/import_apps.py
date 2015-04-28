@@ -118,7 +118,7 @@ class JSONHandler(object):
         app.price = data['price'] if 'price' in data else ''
         app.size = data['size'] if 'size' in data else ''
         app.installs = data['installs'] if 'installs' in data else ''
-        
+        app.developer = data['developer'] if 'developer' in data else ''
         app.save()
         return app
     
