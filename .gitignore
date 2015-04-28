@@ -2,3 +2,4 @@
 .DS_Store
 *.sqlite3
 *.log
+/google_play/store/static/store/css/gps_style.css
