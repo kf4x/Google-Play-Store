@@ -175,7 +175,7 @@ ul.horizontal-slide li[class*="span"]:first-child {
      top: 1px;
      height: 14px;
      width: 69px;
-     background-image: url("star_empty.png");
+     background-image: url("../star_empty.png");
      
  }
 
@@ -183,7 +183,7 @@ ul.horizontal-slide li[class*="span"]:first-child {
      display: block;
      position: absolute;
      height: 14px;
-     background-image: url("star.png");
+     background-image: url("../star.png");
      
  }
  .go-back{

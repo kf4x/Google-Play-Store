@@ -6,57 +6,30 @@
     <div class="card-list">
 
       {% for app in object_list %}
-        <div class="card no-rationale square-cover apps tiny" >
-          <div class="card-content id-track-click id-track-impression" >
-            <div class="cover">
-              <div class="cover-image-container">
-                <div class="cover-outer-align">
-                  <div class="cover-inner-align">
-                    <img alt="{{app.name}}" class="cover-image" src="{{app.icon}}" aria-hidden="true">
+
+
+        <div class="container">
+
+          <div class="media box" style=" padding: 5px">
+            <a class="pull-left" href="{%url 'app_details' package=app.package %}">
+              <img alt="{{app.name}}" class="card-image" src="{{app.icon}}" aria-hidden="true">
+            </a>
+            <div class="media-body">
+              <a href="{%url 'app_details' package=app.package %}"><p class="app-name-list">{{app.name}} </p></a>
+              <p class="dev-name-list">{{app.developer}}</p>
+
+              <div class="stars-container">
+                <div class="tiny-star">
+                  <div class="current-rating" style="width: {{app.percentrating}}%;">
+
                   </div>
                 </div>
               </div>
-            </div>
-            <div class="details">
-              <a class="card-click-target" href="{%url 'app_details' package=app.package  %}" aria-hidden="true" tabindex="-1"></a>
-              <h2>
-                <a class="title" href="{%url 'app_details' package=app.package %}" title="{{app.name}}">{{app.name}} 
-                  
-                  <span class="paragraph-end"></span>
-                </a>
-              </h2>
-              <div class="subtitle-container">
-                <a class="subtitle" href="{%url 'app_details' package=app.package %}" title="{{app.developer}}">{{app.developer}}</a>
-                <span class="price-container">
-                  <span class="apps is-price-tag buy-button-container" >
-                    <button style="display:none" class="price buy id-track-click" >
-                      <span class="display-price">{{app.price}}</span>
-                    </button>
-                  </span>
-                </span>
-              </div>
-              <div class="reason-set">
-                <span class="stars-container">
-                  <a href="{%url 'app_details' package=app.package %}" tabindex="-1">
-                    <div class="reason-set-star-rating">
-                      <div class="tiny-star star-rating-non-editable-container" >
-                        <div class="current-rating" style="width: {{app.percentrating}}%;"></div>
-                      </div>
-                    </div>
-                  </a>
-                  <span class="price-container">
-                    <span class="apps is-price-tag buy-button-container" >
-                      <button style="display:none" class="price buy id-track-click">
-                        <span class="display-price">{{app.price}}</span>
-                      </button>
-                    </span>
-                  </span>
-                </span>
-              </div>
+              <p class="price-list pull-right">{{app.price}}</p>
             </div>
           </div>
+         
         </div>
-        
       {% endfor %}
     </div>
   </div>
