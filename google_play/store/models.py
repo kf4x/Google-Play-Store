@@ -28,7 +28,6 @@ class AndroidPermission(models.Model):
 class AndroidApplication(models.Model):
     """Listing"""
     icon = models.CharField(max_length=512)
-    
     name = models.CharField(max_length=512)
     description = models.TextField()
     package = models.CharField(max_length=512)
@@ -45,6 +44,10 @@ class AndroidApplication(models.Model):
     
     # many to many 
     permissions = models.ManyToManyField(AndroidPermission, related_name='apps')
+
+    @property
+    def percentrating(self):
+        return (self.rating/5.0)*100
 
     def to_dict(self):
         return model_to_dict(self, exclude='permissions')
