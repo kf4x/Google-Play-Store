@@ -10,6 +10,7 @@ from django.db.models import Q
 
 
 
+
 class IndexView(generic.TemplateView):
     template_name = 'store/index.djhtml'
 
@@ -21,16 +22,22 @@ class DetailView(generic.View):
     def get(self, request, *args, **kwargs):
 
         pkg  = self.kwargs["package"]
-        self.object= AndroidApplication.objects.get(package=pkg)
-        self.object.description = self.object.description
-        self.object.percentrating = (self.object.rating/5.0)*100
+        self.object = AndroidApplication.objects.get(package=pkg)
+        #self.object.description = self.object.description
+        
+        #t = loader.get_template('store/detail.djhtml')
+        #c = RequestContext(request)
 
-
-        t = loader.get_template('store/detail.djhtml')
-        c = RequestContext(request, self.object)
+        dev = self.object.developer
+        if dev:
+            more = AndroidApplication.objects.filter(developer=dev)[:10]
+        else:
+            more = []
+        
         return render_to_response(
             'store/detail.djhtml',
-            {'object':self.object},
+            {'object': self.object,
+             'more': more},
             context_instance=RequestContext(request)
         )
                           
