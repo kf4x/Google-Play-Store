@@ -21,11 +21,8 @@ class AppDetailView(generic.View):
     def get(self, request, *args, **kwargs):
 
         pkg  = self.kwargs["package"]
+        # get the record from the store
         self.object = AndroidApplication.objects.get(package=pkg)
-        #self.object.description = self.object.description
-
-        #t = loader.get_template('store/detail.djhtml')
-        #c = RequestContext(request)
 
         dev = self.object.developer
         if dev:
@@ -42,6 +39,8 @@ class AppDetailView(generic.View):
         )
 
 class DevDetailView(generic.ListView):
+    """View for getting apps by developer"""
+    
     template_name = 'store/results.djhtml'
     
     def get_queryset(self):
@@ -49,25 +48,45 @@ class DevDetailView(generic.ListView):
         return AndroidApplication.objects.filter(developer=dev)
 
     def get_context_data(self, **kwargs):
+        # Set the page title
         kwargs['page'] = 'More by '+ self.kwargs['dev']
         return append_hamming(DevDetailView, self, **kwargs)
 
 class SearchResultsView(generic.ListView):
+    """View for searching the store"""
+    
     template_name = 'store/results.djhtml'
 
     def get_queryset(self):
+        # Get the keyword passed in through url params
         cont = self.request.GET.get('q')
+
+        # Search if name or description contains keyword
         # return AndroidApplication.objects.filter(
         #     Q(name__contains=cont) | Q(description__contains=conte))[:40]
+        
+        # search if name contains keyword
         return AndroidApplication.objects.filter(name__contains=cont)[:40]
 
     def get_context_data(self, **kwargs):
+        # set the page title
         kwargs['page'] = 'Apps'
         return append_hamming(SearchResultsView, self, **kwargs)
 
 
 # util
 def append_hamming(cls, inst, **kwargs):
+    """Adds hamming stats to the context
+
+    Args:
+        cls - the class that is iheriting from super
+        inst - the instance most likly self 
+        kwargs - just the args for context
+    Returns:
+       context - the context will have hamming and page which can be 
+    referenced in the view"""
+
+    
     context = super(cls, inst).get_context_data(**kwargs)
     # add data to context about this result
     stats = hamming_stats(context['object_list'])
