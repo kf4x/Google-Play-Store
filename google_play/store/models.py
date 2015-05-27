@@ -112,7 +112,7 @@ class HammingPrepare(object):
 # getting stats of search.
 # @lru_cache(maxsize=32)
 def hamming_stats(apps):
-    if apps == None or len(apps) == 0:
+    if apps == None or len(apps) <= 1:
         return {"distance": 0, "stats": {}}
 
     apps = HammingPrepare().serialize(apps)
