@@ -15,9 +15,8 @@ class IndexView(generic.TemplateView):
     template_name = 'store/index.djhtml'
 
 
-class DetailView(generic.View):
-    model = AndroidApplication
-    template_name = 'store/detail.djhtml'
+class AppDetailView(generic.View):
+    """Used to display details of a Application."""
 
     def get(self, request, *args, **kwargs):
 
@@ -30,7 +29,8 @@ class DetailView(generic.View):
 
         dev = self.object.developer
         if dev:
-            more = AndroidApplication.objects.filter(developer=dev)[:10]
+            more = AndroidApplication.objects.filter(
+                developer=dev).exclude(pk=self.object.pk)[:5]
         else:
             more = []
 
@@ -41,19 +41,33 @@ class DetailView(generic.View):
             context_instance=RequestContext(request)
         )
 
+class DevDetailView(generic.ListView):
+    template_name = 'store/results.djhtml'
+    
+    def get_queryset(self):
+        dev = self.kwargs['dev']
+        return AndroidApplication.objects.filter(developer=dev)
 
+    def get_context_data(self, **kwargs):
+        return append_hamming(DevDetailView, self, **kwargs)
 
-class ResultsView(generic.ListView):
+class SearchResultsView(generic.ListView):
     template_name = 'store/results.djhtml'
 
     def get_queryset(self):
         cont = self.request.GET.get('q')
-        return AndroidApplication.objects.filter(
-            Q(name__contains=cont) | Q(description__contains=cont))[:40]
+        # return AndroidApplication.objects.filter(
+        #     Q(name__contains=cont) | Q(description__contains=conte))[:40]
+        return AndroidApplication.objects.filter(name__contains=cont)[:40]
 
     def get_context_data(self, **kwargs):
-        context = super(ResultsView, self).get_context_data(**kwargs)
-        # add data to context about this result
-        stats = hamming_stats(context['object_list'])
-        context['hamming'] = stats
-        return context
+        return append_hamming(SearchResultsView, self, **kwargs)
+
+
+# util
+def append_hamming(cls, inst, **kwargs):
+    context = super(cls, inst).get_context_data(**kwargs)
+    # add data to context about this result
+    stats = hamming_stats(context['object_list'])
+    context['hamming'] = stats
+    return context
