@@ -65,7 +65,10 @@ class JSONHandler(object):
             obj = self.data
 
         #keys = self.data.keys()
-        app = self._application(obj)
+        app, created = self._application(obj)
+
+        if not created:
+            return app
         
         for k in obj.keys():
             if 'permission' in k:
@@ -108,6 +111,8 @@ class JSONHandler(object):
             name=data['name'],
             package=data['package'])
 
+        if not created:
+            return app, created
         
         # icon function
         icon = data['icon'] if 'icon' in data else ''
@@ -124,39 +129,41 @@ class JSONHandler(object):
         app.developer = data['developer'] if 'developer' in data else ''
         
         app.save()
-        return app
+        return app, created
 
     def _rating(self, app, data):
-        r, created = ApplicationRating.objects.get_or_create(
-            one_star = data['one_star'],
-            two_star = data['two_star'],
-            three_star = data['three_star'],
-            four_star = data['four_star'],
-            five_star = data['five_star'],
-            total_ratings = data['total_ratings'],
-            rating = data['rating'],
-            app = app
-        )
-    
+        r = ApplicationRating(app = app)
+
+        r.one_star = data['one_star']
+        r.two_star = data['two_star']
+        r.three_star = data['three_star']
+        r.four_star = data['four_star']
+        r.five_star = data['five_star']
+        r.total_ratings = data['total_ratings']
+        r.rating = data['rating']
+        r.save()
+        
     def _review(self, app, data):
         """Add review and assiociate to app"""
         for rev in data:
-            s, created = ApplicationReview.objects.get_or_create(
-                image = rev['image'],
-                author = rev['author'],
-                rating = rev['rating'],
+            s = ApplicationReview(
+                user_pic = rev['image'],
+                user = rev['author'],
+                user_rating = rev['rating'],
                 text = rev['review-text'],
                 title = rev['title'],
                 app = app
             )
+            s.save()
 
     def _screenshot(self, app, data):
         """Add screenshots and assiociate with app"""
         for ss in data:
-            s, created = ApplicationScreenShot.objects.get_or_create(
+            s = ApplicationScreenShot(
                 location=ss,
                 app=app
             )
+            s.save()
         
 def import_app(path):
     threshhold = 250 
@@ -173,7 +180,7 @@ def import_app(path):
             apps.append(app)
             if count == len(searches[search_term])-1 or count == threshhold :
                 ret = handlr.deserialize(apps)
-                logging.debug('Serialized %s' % ret) 
+                # logging.debug('Serialized %s' % ret) 
                 apps = []
                 count = 0
             else:
