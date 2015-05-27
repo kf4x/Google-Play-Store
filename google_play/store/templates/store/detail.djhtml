@@ -63,25 +63,28 @@
           <p id="total-ratings">{#{app.total_ratings}#} </p>
         </div>
       </div>
-
-      <div class="media" style=" padding: 5px">
-        <a class="pull-left" href="#">
-          <img src="http://placehold.it/64x64" class="img-circle">
-        </a>
-        <div class="media-body">
-          <strong class="media-heading"><%= @app.comments.first.author %></strong>
-          <div class="stars-container">
-            <div class="tiny-star go-back">
-              <div class="current-rating" style="width: 78.47838401794434%;">
-
+      {%if object.reviews%}
+        {%for review in object.reviews.all%}
+          <div class="media" style=" padding: 5px">
+            <a class="pull-left" href="#">
+              <img src="{{review.user_pic}}" class="img-circle">
+            </a>
+            <div class="media-body">
+              <strong class="media-heading">{{review.title}}</strong>
+              <div class="stars-container">
+                <div class="tiny-star go-back">
+                  <div class="current-rating" style="width: {{review.user_rating}}%;">
+                    
+                  </div>
+                </div>
               </div>
+              <p>
+                {{review.text}}
+              </p>
             </div>
           </div>
-          <p>
-            <%= @app.comments.first.content %>
-          </p>
-        </div>
-      </div>
+        {%endfor%}
+      {%endif%}
       <hr>
       {%if more%}
         <div class="row">
@@ -91,7 +94,7 @@
 
             <div class="card">
 
-              <img class="card-img" src="http://placehold.it/75x75">
+              <img class="card-img" src="{{app.icon}}">
 
               <div class="details">
                 <p class="card-title">{{app.name}}</p>
@@ -99,26 +102,27 @@
                 
                 <div class="stars-container">
                   <div class="tiny-star">
-                    <div class="current-rating" style="width:0%;"></div>
+                    <div class="current-rating" style="width:{{app.rating.percentrating}}%;"></div>
                   </div>
                 </div>
                 
               </div>
             </div>
   
-        </div>
+        
           {%endfor%}
+          </div>
           <hr>
       {%endif%}
       
       <div class="row">
         <h4>Delevoper</h4>
         <hr>
-        <p><span class="glyphicon glyphicon-search"></span> web <%= @app.website%> </p>
+        <p><span class="glyphicon glyphicon-search"></span> web </p>
         <hr>
-        <p><span class="glyphicon glyphicon-envelope"></span> email <%= @app.email%></p>
+        <p><span class="glyphicon glyphicon-envelope"></span> email</p>
         <hr>
-        <p><span class="glyphicon glyphicon-envelope"></span> privacy policy <%= @app.privacypolicy %></p>
+        <p><span class="glyphicon glyphicon-envelope"></span> privacy policy</p>
       </div>
       <hr>
   </div>
