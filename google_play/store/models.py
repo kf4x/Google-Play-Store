@@ -53,18 +53,18 @@ class ApplicationReview(models.Model):
     title = models.CharField(max_length=128, default='')
     text = models.TextField()
     user_pic = models.CharField(max_length=512, default='')
-    urer_rating = models.IntegerField(default=0)
+    user_rating = models.CharField(max_length=128, default='')
     # one to many
     app = models.ForeignKey(AndroidApplication, related_name='reviews')
 
     
 class ApplicationRating(models.Model):
     """Application Rating"""
-    one_star = models.FloatField(default=0.0)
-    two_star = models.FloatField(default=0.0)
-    three_star = models.FloatField(default=0.0)
-    four_star = models.FloatField(default=0.0)
-    five_star = models.FloatField(default=0.0)
+    one_star = models.CharField(max_length=128, default='')
+    two_star = models.CharField(max_length=128, default='')
+    three_star = models.CharField(max_length=128, default='')
+    four_star = models.CharField(max_length=128, default='')
+    five_star = models.CharField(max_length=128, default='')
     total_ratings = models.FloatField(default=0.0)
     rating = models.FloatField(default=0.0)
 
