@@ -29,7 +29,7 @@ python manage.py runserver
 Make sure you change your path...
 
 ```bash
-python manage.py import_apps --path="../../datasets/2k13_all_by_term.json"
+python manage.py import_apps --path="../../terms.out.json"
 ```
 
 
