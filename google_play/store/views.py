@@ -49,6 +49,7 @@ class DevDetailView(generic.ListView):
         return AndroidApplication.objects.filter(developer=dev)
 
     def get_context_data(self, **kwargs):
+        kwargs['page'] = 'More by '+ self.kwargs['dev']
         return append_hamming(DevDetailView, self, **kwargs)
 
 class SearchResultsView(generic.ListView):
@@ -61,6 +62,7 @@ class SearchResultsView(generic.ListView):
         return AndroidApplication.objects.filter(name__contains=cont)[:40]
 
     def get_context_data(self, **kwargs):
+        kwargs['page'] = 'Apps'
         return append_hamming(SearchResultsView, self, **kwargs)
 
 
@@ -70,4 +72,5 @@ def append_hamming(cls, inst, **kwargs):
     # add data to context about this result
     stats = hamming_stats(context['object_list'])
     context['hamming'] = stats
+    context['page'] = kwargs.get('page', '')
     return context

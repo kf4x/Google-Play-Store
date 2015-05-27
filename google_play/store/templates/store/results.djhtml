@@ -1,7 +1,9 @@
 {% extends "store/base.djhtml" %}
 
 {% block content %}
+  <h2>{{page}}</h2>
   <div class="search-page">
+    
     {{hamming.distance}}
     <div class="card-list">
 
@@ -16,11 +18,11 @@
             </a>
             <div class="media-body">
               <a href="{%url 'app_details' package=app.package %}"><p class="app-name-list">{{app.name}} </p></a>
-              <p class="dev-name-list">{{app.developer}}</p>
+              <p class="dev-name-list"><a href="{%url 'more_by_dev' dev=app.developer %}">{{app.developer}}</a></p>
 
               <div class="stars-container">
                 <div class="tiny-star">
-                  <div class="current-rating" style="width: {{app.percentrating}}%;">
+                  <div class="current-rating" style="width: {{app.rating.percentrating}}%;">
 
                   </div>
                 </div>
