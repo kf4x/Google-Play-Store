@@ -9,7 +9,7 @@ from django.template import RequestContext, loader
 from django.db.models import Q
 
 
-
+__author__="Javier C"
 
 class IndexView(generic.TemplateView):
     template_name = 'store/index.djhtml'
