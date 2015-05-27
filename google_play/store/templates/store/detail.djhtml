@@ -19,37 +19,18 @@
 
 
     <ul class="horizontal-slide">
-      <li class="span2">
-        <a href="#" class="thumbnail-prvw">
-          <img src="http://placehold.it/110x150" alt="" />
-        </a>
-      </li>
-      <li class="span2">
-        <a href="#" class="thumbnail-prvw">
-          <img src="http://placehold.it/110x150" alt="" />
-        </a>
-      </li>
-      <li class="span2">
-        <a href="#" class="thumbnail-prvw">
-          <img src="http://placehold.it/110x150" alt="" />
-        </a>
-      </li>
-      <li class="span2">
-        <a href="#" class="thumbnail-prvw">
-          <img src="http://placehold.it/180x100" alt="" />
-        </a>
-      </li>
-      <li class="span2">
-        <a href="#" class="thumbnail-prvw">
-          <img src="http://placehold.it/180x100" alt="" />
-        </a>
-      </li>
-
+        {%for ss in object.screen_shots.all%}
+          <li class="span2">
+            <a href="#" class="thumbnail-prvw">
+              <img src="{{ss.location}}=h310" alt="" />
+            </a>
+          </li>
+        {%endfor%}
     </ul>
     <div class="stars-container">
 
       <div class="tiny-star go-back">
-        <div class="current-rating" style="width: {{object.percentrating}}%;">
+        <div class="current-rating" style="width: {{object.rating.percentrating}}%;">
 
         </div>
 
@@ -71,7 +52,7 @@
           <div id="average-rating-title">
             Average
           </div>
-          <p id="avg-rating">{{object.rating|floatformat}}</p>
+          <p id="avg-rating">{{object.rating.rating|floatformat}}</p>
           <div class="stars-container">
             <div class="tiny-star go-back">
               <div class="current-rating" style="width: {{object.percentrating}}%;">
@@ -79,7 +60,7 @@
               </div>
             </div>
           </div>
-          <p id="total-ratings">{{app.total_ratings}} </p>
+          <p id="total-ratings">{#{app.total_ratings}#} </p>
         </div>
       </div>
 
