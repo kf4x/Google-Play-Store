@@ -1,11 +1,11 @@
 from django.db import models
 from sortedcontainers import SortedList, SortedSet, SortedDict
-# not the greatest ... 
+# not the greatest ...
 # assuming https://github.com/javierchavez/google-research
 import sys
 sys.path.append("../../")
 from utils import compare
-from django.forms.models import model_to_dict    
+from django.forms.models import model_to_dict
 from django.db.models.query import *
 
 
@@ -14,7 +14,7 @@ class AndroidPermission(models.Model):
     name = models.CharField(max_length=512)
     description = models.TextField(default='')
     category = models.CharField(max_length=512, default='')
-    
+
     def to_dict(self):
         return model_to_dict(self)
 
@@ -23,7 +23,7 @@ class AndroidPermission(models.Model):
 
     def __unicode__(self):
         return self.name
-        
+
 
 class AndroidApplication(models.Model):
     """Listing"""
@@ -32,8 +32,6 @@ class AndroidApplication(models.Model):
     description = models.TextField()
     package = models.CharField(max_length=512)
     category = models.CharField(max_length=512, default='')
-    total_ratings = models.FloatField(default=0.0)
-    rating = models.FloatField(default=0.0)
     url = models.CharField(max_length=512, default='')
     pub_date = models.CharField(max_length=128, default='')
     price = models.CharField(max_length=128, default='')
@@ -42,30 +40,48 @@ class AndroidApplication(models.Model):
     installs = models.CharField(max_length=128, default='')
     category = models.CharField(max_length=128, default='')
     
-    # many to many 
+    # many to many
     permissions = models.ManyToManyField(AndroidPermission, related_name='apps')
+
+
+    def to_dict(self):
+        return model_to_dict(self, exclude='permissions')
+
+class ApplicationReview(models.Model):
+    """Comments/Reivews for app"""
+    user = models.CharField(max_length=512, default='')
+    title = models.CharField(max_length=128, default='')
+    text = models.TextField()
+    user_pic = models.CharField(max_length=512, default='')
+    urer_rating = models.IntegerField(default=0)
+    # one to many
+    app = models.ForeignKey(AndroidApplication, related_name='reviews')
+
+    
+class ApplicationRating(models.Model):
+    """Application Rating"""
+    one_star = models.FloatField(default=0.0)
+    two_star = models.FloatField(default=0.0)
+    three_star = models.FloatField(default=0.0)
+    four_star = models.FloatField(default=0.0)
+    five_star = models.FloatField(default=0.0)
+    total_ratings = models.FloatField(default=0.0)
+    rating = models.FloatField(default=0.0)
+
+    # one to one
+    app = models.OneToOneField(AndroidApplication, primary_key=True, related_name='rating')
 
     @property
     def percentrating(self):
         return (self.rating/5.0)*100
 
-    def to_dict(self):
-        return model_to_dict(self, exclude='permissions')
         
-class ApplicationReview(models.Model):
-    """Comments/Reivews for app"""
-    user = models.CharField(max_length=512)
-    text = models.TextField()
-
-    # one to many
-    app = models.ForeignKey(AndroidApplication)
-
 class ApplicationScreenShot(models.Model):
     """Screen Shot for app"""
     location = models.CharField(max_length=512, default='')
-    
+
     # one to many
-    app = models.ForeignKey(AndroidApplication)
+    app = models.ForeignKey(AndroidApplication, related_name='screen_shots')
 
 # would like to turn into json encode
 class HammingPrepare(object):
@@ -73,18 +89,18 @@ class HammingPrepare(object):
         self.data = None
 
     def serialize(self, data):
-        
+
         self.data = data
         if isinstance(data, QuerySet):
             return self._QSencode()
 
-        
+
     def _app_encode(self, data):
         app = data.to_dict()
         perms = [ str(perm) for perm in data.permissions.all() ]
         app['permissions'] = perms if len(perms) > 0 else []
         return app
-    
+
     # we can make this more generic later
     def _QSencode(self):
         apps = []
@@ -98,7 +114,7 @@ class HammingPrepare(object):
 def hamming_stats(apps):
     if apps == None or len(apps) == 0:
         return {"distance": 0, "stats": {}}
-    
+
     apps = HammingPrepare().serialize(apps)
     ss = SortedSet([p.name for p in AndroidPermission.objects.all()])
     hamming = compare.Hamming(tnp=ss, key='permissions')
@@ -109,5 +125,3 @@ def hamming_stats(apps):
         "distance": dist,
         "stats": stats
         }
-        
-    
